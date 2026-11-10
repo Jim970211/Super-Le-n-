@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flow Tasks</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="login-screen" class="auth-card visible">
+        <div class="auth-header">
+          <span class="brand-badge">F</span>
+          <div>
+            <p>Bienvenido</p>
+            <h1>Flow Tasks</h1>
+          </div>
+        </div>
+
+        <div id="login-panel" class="auth-panel">
+          <form id="login-form" class="auth-form">
+            <label>
+              <span>Usuario o correo</span>
+              <input type="text" id="username" placeholder="admin o admin@flowtasks.com" required />
+            </label>
+
+            <label>
+              <span>Contraseña</span>
+              <input type="password" id="password" placeholder="123456" required />
+            </label>
+
+            <button type="submit">Iniciar sesión</button>
+            <button type="button" id="show-register-btn" class="secondary-link">Crear cuenta</button>
+            <button type="button" id="show-recovery-btn" class="secondary-link">He olvidado mi contraseña</button>
+            <p id="login-message" class="message"></p>
+          </form>
+        </div>
+
+        <div id="register-panel" class="auth-panel hidden">
+          <form id="register-form" class="auth-form">
+            <label>
+              <span>Nombre completo</span>
+              <input type="text" id="register-fullname" placeholder="Ana García" required />
+            </label>
+
+            <label>
+              <span>Correo electrónico</span>
+              <input type="email" id="register-email" placeholder="ana@email.com" required />
+            </label>
+
+            <label>
+              <span>Nuevo usuario</span>
+              <input type="text" id="register-username" placeholder="usuario123" required />
+            </label>
+
+            <label>
+              <span>Contraseña</span>
+              <input type="password" id="register-password" placeholder="mínimo 4 caracteres" required />
+            </label>
+
+            <label>
+              <span>Confirmar contraseña</span>
+              <input type="password" id="confirm-password" placeholder="Repite la contraseña" required />
+            </label>
+
+            <div id="password-strength" class="password-strength" aria-live="polite">
+              <div class="strength-bar">
+                <span id="strength-fill"></span>
+              </div>
+              <p id="strength-label">Muy débil</p>
+              <ul class="strength-rules">
+                <li data-rule="length">8+ caracteres</li>
+                <li data-rule="upper">Mayúsculas</li>
+                <li data-rule="lower">Minúsculas</li>
+                <li data-rule="number">Números</li>
+                <li data-rule="special">Símbolos</li>
+              </ul>
+            </div>
+
+            <button type="submit">Registrarse</button>
+            <button type="button" id="show-login-btn" class="secondary-link">Ya tengo cuenta</button>
+            <p id="register-message" class="message"></p>
+          </form>
+        </div>
+
+        <div id="recovery-panel" class="auth-panel hidden">
+          <form id="recovery-form" class="auth-form">
+            <label>
+              <span>Correo electrónico</span>
+              <input type="email" id="recovery-email" placeholder="ana@email.com" required />
+            </label>
+
+            <button type="submit">Recuperar contraseña</button>
+            <button type="button" id="back-login-btn" class="secondary-link">Volver al inicio</button>
+            <p id="recovery-message" class="message"></p>
+          </form>
+        </div>
+      </div>
+
+      <div id="app-screen" class="hidden">
+        <header class="topbar">
+          <div class="brand">
+            <span class="brand-badge">F</span>
+            <div>
+              <p>Productividad</p>
+              <h1>Flow Tasks</h1>
+            </div>
+          </div>
+
+          <div class="user-panel">
+            <div class="user-chip">
+              <span class="user-avatar" id="user-avatar">U</span>
+              <span id="user-label">Usuario</span>
+            </div>
+            <button id="profile-btn" class="secondary-btn" type="button">Perfil</button>
+            <button id="logout-btn" class="secondary-btn" type="button">Salir</button>
+          </div>
+        </header>
+
+        <main class="app-card">
+          <section id="profile-card" class="profile-card hidden">
+            <div class="profile-head">
+              <div class="profile-avatar" id="profile-avatar">U</div>
+              <div>
+                <p class="profile-label">Perfil</p>
+                <h2 id="profile-name">Usuario</h2>
+              </div>
+            </div>
+
+            <form id="profile-form" class="profile-form">
+              <label>
+                <span>Nombre completo</span>
+                <input type="text" id="profile-fullname" placeholder="Tu nombre" required />
+              </label>
+
+              <label>
+                <span>Correo electrónico</span>
+                <input type="email" id="profile-email" placeholder="tu@email.com" required />
+              </label>
+
+              <button type="submit">Guardar perfil</button>
+              <p id="profile-message" class="message"></p>
+            </form>
+          </section>
+
+          <section class="stats" aria-label="Estadísticas">
+            <div class="stat-box">
+              <span>Total</span>
+              <strong id="total-count">0</strong>
+            </div>
+            <div class="stat-box">
+              <span>Pendientes</span>
+              <strong id="pending-count">0</strong>
+            </div>
+            <div class="stat-box">
+              <span>Completadas</span>
+              <strong id="completed-count">0</strong>
+            </div>
+          </section>
+
+          <form id="task-form" class="task-form">
+            <div class="input-wrap wide">
+              <label for="task-input">Tarea</label>
+              <input id="task-input" type="text" placeholder="¿Qué quieres hacer hoy?" maxlength="140" required />
+            </div>
+
+            <div class="input-wrap">
+              <label for="task-priority">Prioridad</label>
+              <select id="task-priority">
+                <option value="low">Baja</option>
+                <option value="medium" selected>Media</option>
+                <option value="high">Alta</option>
+              </select>
+            </div>
+
+            <div class="input-wrap">
+              <label for="task-date">Fecha</label>
+              <input id="task-date" type="date" />
+            </div>
+
+            <button class="primary-btn" type="submit">Agregar</button>
+          </form>
+
+          <div class="toolbar">
+            <div class="filters" aria-label="Filtros de tareas">
+              <button class="filter-btn active" data-filter="all" type="button">Todas</button>
+              <button class="filter-btn" data-filter="active" type="button">Pendientes</button>
+              <button class="filter-btn" data-filter="completed" type="button">Completadas</button>
+            </div>
+            <button id="clear-completed" class="secondary-btn" type="button">Limpiar hechas</button>
+          </div>
+
+          <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        </main>
+      </div>
+    </div>
+
+    <template id="task-template">
+      <li class="task-item">
+        <div class="task-main">
+          <input type="checkbox" class="task-check" />
+          <div class="task-copy">
+            <span class="task-text"></span>
+            <div class="task-meta">
+              <span class="priority-pill"></span>
+              <span class="task-date"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-actions">
+          <button class="edit-btn" type="button">Editar</button>
+          <button class="delete-btn" type="button">Eliminar</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

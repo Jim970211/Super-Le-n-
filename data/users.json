@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+  },
+  {
+    "id": 1794178195196,
+    "username": "nuevoUsuario",
+    "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+  },
+  {
+    "id": 1794178269869,
+    "username": "ana",
+    "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "email": "ana@example.com",
+    "fullName": "Ana García"
+  },
+  {
+    "id": 1794178405921,
+    "username": "luisa",
+    "password": "7de52da3f1c6576f488811b6273a4b2e16ba48edafe7a3537cc7126cf0e7574f",
+    "email": "luisa@example.com",
+    "fullName": "Luisa Vega"
+  },
+  {
+    "id": 1794178566165,
+    "username": "marta",
+    "password": "2d80b85e65f8baa4a4bc3f71ca910585e762a850215c5145d268f8b4dd865a21",
+    "email": "marta@example.com",
+    "fullName": "Marta Ruiz"
+  }
+]
